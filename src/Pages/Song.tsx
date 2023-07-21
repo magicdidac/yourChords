@@ -38,10 +38,11 @@ export const SongPage = () => {
                 </Stack>
             </AppBar>
             <Container style={{ marginTop: '7rem', overflowX: 'hidden' }}>
-                <Stack direction='row' gap='.5rem' alignItems='end'>
+                <Stack direction='row' gap='.5rem' alignItems='start'>
                     <Typography variant="h5">{song.name}</Typography>
-                    <Typography variant='body1'>({song.artists})</Typography>
+                    <div style={{ fontSize: '10px' }}>({song.artists.join(', ')})</div>
                 </Stack>
+                {song.capo && <div style={{ fontSize: '10px' }}>Traste: {song.capo}</div>}
                 <pre style={{ fontSize: textSize + 'px' }}>{(chordsView) ? song.html : song.lyrics}</pre>
             </Container>
         </>

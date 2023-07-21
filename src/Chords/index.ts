@@ -1,10 +1,12 @@
 import { Song } from "../interfaces";
+import { AyMiDios } from "./AyMiDios";
 import { ElPatioDeGodella } from "./ElPatioDeGodella";
 import { LaNinaYElHachis } from "./LaNinaYElHachis";
 
 const AllSongs: Song[] = [
     ElPatioDeGodella,
-    LaNinaYElHachis
+    LaNinaYElHachis,
+    AyMiDios
 ]
 
 export const AllSongsList: Song[] = AllSongs.sort((a, b) => {

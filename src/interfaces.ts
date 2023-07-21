@@ -6,4 +6,5 @@ export interface Song {
     audio: string
     lyrics: string
     html: string
+    capo?: number
 }
