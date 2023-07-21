@@ -1,5 +1,6 @@
 {
   "name": "your-chords",
+  "homepage": "https://chords.magicdidac.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
