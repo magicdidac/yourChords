@@ -4,6 +4,6 @@ export interface Song {
     artists: string[]
     thumbnail: string
     audio: string
-    letra: string
+    lyrics: string
     html: string
 }

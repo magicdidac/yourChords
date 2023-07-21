@@ -1,19 +1,18 @@
 import { Song } from "../interfaces"
 
 const html = `
-<pre>
-    Am
+     Am
 Cementerio donde vivo
-    G
+      G
 Donde me iban a llevar
       F
 Mamá, habla con el juez
-       E
+        E
 Que me dé la libertad
 
       Am
 Yo no niego haber robaodo
-      G
+       G
 Ni tampoco haber mataodo
       F
 Yo no tengo esa fe
@@ -35,7 +34,7 @@ Cuando salga de Godella
 Con mi madre me encontraré
        F
 Con un porrito en la mano
-    E               Am
+    E             Am
 Una rosa y un clavel
 
 G
@@ -44,9 +43,9 @@ F
 Oh oh oh oh
 E
 Espérame
-</pre>`
+`
 
-const letra = `
+const lyrics = `
 Cementerio donde vivo
 Donde me iban a lleva'
 Mamá, habla con el jue'
@@ -78,6 +77,6 @@ export const ElPatioDeGodella: Song = {
       artists: ['Maritune'],
       thumbnail: 'https://lh3.googleusercontent.com/EF9iw9mI01A-zs81MqjzoX9CfW7fOqWuorlJ4BgJ4Fp5AzKGRZQa_VzbMDoKsap1hJIWmNPs1fgVSto=w544-h544-l90-rj',
       audio: 'https://www.youtube.com/watch?v=rUt2x6LFcI4',
-      letra,
+      lyrics,
       html
 } 

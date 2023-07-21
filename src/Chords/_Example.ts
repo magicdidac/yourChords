@@ -1,11 +1,10 @@
 import { Song } from "../interfaces"
 
 const html = `
-<pre>
 
-</pre>`
+`
 
-const letra = `
+const lyrics = `
 
 `
 
@@ -15,6 +14,6 @@ export const SongName: Song = {
     artists: [''],
     thumbnail: '',
     audio: '',
-    letra,
+    lyrics,
     html
 } 
