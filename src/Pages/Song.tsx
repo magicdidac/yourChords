@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { AllSongsList } from "../Chords"
-import { Header } from "../Components/Header"
-import { CircularProgress, Container, Slider, Stack, Switch, Typography } from "@mui/material"
+import { AppBar, CircularProgress, Container, Slider, Stack, Switch, Typography } from "@mui/material"
 import { useState } from "react"
 import { formatNumber } from "../utils"
 
@@ -25,8 +24,7 @@ export const SongPage = () => {
 
     return (
         <>
-            <Header />
-            <Container style={{ margin: '1rem 0', overflowX: 'hidden' }}>
+            <AppBar position='fixed' style={{ padding: '3.5rem 1rem 0rem', zIndex: '1', background: 'white' }} elevation={0}>
                 <Stack direction='row' justifyContent='space-between'>
                     <Stack direction='row' gap='1rem' width='15rem' alignItems='center'>
                         <Typography variant="body2">{formatNumber(textSize) + 'px'}</Typography>
@@ -38,6 +36,8 @@ export const SongPage = () => {
                         <Typography>A</Typography>
                     </Stack>
                 </Stack>
+            </AppBar>
+            <Container style={{ marginTop: '7rem', overflowX: 'hidden' }}>
                 <Stack direction='row' gap='.5rem' alignItems='end'>
                     <Typography variant="h5">{song.name}</Typography>
                     <Typography variant='body1'>({song.artists})</Typography>

@@ -1,5 +1,9 @@
 import { MyRoutes } from "./routes"
 
 export const App = () => {
-  return (<MyRoutes />)
+  return (
+    <div style={{ marginTop: '3rem' }}>
+      <MyRoutes />
+    </div>
+  )
 }

@@ -1,40 +1,40 @@
 import { Song } from "../interfaces"
 
 const html = `
-Am
+     Am
 Cementerio donde vivo
       G
 Donde me iban a llevar
-F
+      F
 Mamá, habla con el juez
-E
+        E
 Que me dé la libertad
 
-Am
+      Am
 Yo no niego haber robaodo
-G
+       G
 Ni tampoco haber mataodo
-F
+      F
 Yo no tengo esa fe
-E
+      E
 Ni tampoco la tendré
 
-Am
+      Am
 En el patio de Godella
-G
+       G
 Hay un charco y no ha lloviodo
-F
+        F
 Son las lágrimas de un preso
-E
+         E
 Que ha entraodo y no ha saliodo
 
-Am
+       Am
 Cuando salga de Godella
-G
+       G
 Con mi madre me encontraré
-F
+       F
 Con un porrito en la mano
-E               Am
+    E             Am
 Una rosa y un clavel
 
 G
@@ -46,30 +46,30 @@ Espérame
 `
 
 const lyrics = `
-            Cementerio donde vivo
-            Donde me iban a lleva'
-            Mamá, habla con el jue'
-            Que me de la libertad
+Cementerio donde vivo
+Donde me iban a lleva'
+Mamá, habla con el jue'
+Que me de la libertad
 
-            Yo no niego haber roba'o
-            Ni tampoco haber mata'o
-            Yo no tengo esa fe
-            Ni tampoco la tendré
+Yo no niego haber roba'o
+Ni tampoco haber mata'o
+Yo no tengo esa fe
+Ni tampoco la tendré
 
-            En el patio de Godella
-            Hay un charco y no ha llovi'o
-            Son las lágrimas de un preso
-            Porque ha entra'o y no ha sali'o
+En el patio de Godella
+Hay un charco y no ha llovi'o
+Son las lágrimas de un preso
+Porque ha entra'o y no ha sali'o
 
-            Cuando salga de Godella
-            Con mi madre me encontraré
-            Con un porrito en la mano
-            Una rosa y un clavel
+Cuando salga de Godella
+Con mi madre me encontraré
+Con un porrito en la mano
+Una rosa y un clavel
 
-            Oh-oh-oh-oh
-            Oh-oh-oh-oh
-            Espérame
-            `
+Oh-oh-oh-oh
+Oh-oh-oh-oh
+Espérame
+`
 
 export const ElPatioDeGodella: Song = {
       id: 'elpatiodegodella',
