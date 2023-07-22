@@ -5,7 +5,7 @@ import ReactPlayer from "react-player"
 interface IYoutubeDialogProps {
     url: string
     open: boolean
-    onClose: ((event: {}, reason: "backdropClick" | "escapeKeyDown") => void) | undefined
+    onClose: () => void
 }
 
 export const YoutubeDialog = (props: IYoutubeDialogProps) => {
@@ -14,7 +14,7 @@ export const YoutubeDialog = (props: IYoutubeDialogProps) => {
     return (
         <Dialog open={open} onClose={onClose}>
             <Stack alignItems='end' marginRight='1rem'>
-                <IconButton size="small"><Close /></IconButton>
+                <IconButton onClick={onClose} size="small"><Close /></IconButton>
             </Stack>
             <DialogContent>
                 <ReactPlayer url={url} width='100%' height='75%' playing={true} />
