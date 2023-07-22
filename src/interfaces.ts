@@ -6,5 +6,12 @@ export interface Song {
     audio: string
     lyrics: string
     html: string
+    chords: string[]
     capo?: number
+}
+
+export interface Chord {
+    name: string,
+    frets: number[]
+    barre?: number
 }

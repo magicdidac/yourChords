@@ -77,6 +77,7 @@ export const ElPatioDeGodella: Song = {
       artists: ['Maritune'],
       thumbnail: 'https://lh3.googleusercontent.com/EF9iw9mI01A-zs81MqjzoX9CfW7fOqWuorlJ4BgJ4Fp5AzKGRZQa_VzbMDoKsap1hJIWmNPs1fgVSto=w544-h544-l90-rj',
       audio: 'https://www.youtube.com/watch?v=rUt2x6LFcI4',
+      chords: ['Am', 'G', 'F', 'E'],
       lyrics,
       html
 } 

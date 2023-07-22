@@ -50,6 +50,7 @@ export const LaNinaYElHachis: Song = {
      artists: ['El Gamito'],
      thumbnail: 'https://lh3.googleusercontent.com/BzVp21o4nIVB15yHRCbujL5lo3Q0IS6XB5qyt_K5KEnMLHRmgvET9p1nhkgx2apmfedgE1-bERJsoBtA=w544-h544-l90-rj',
      audio: 'https://www.youtube.com/watch?v=Iqes7ILJbiY',
+     chords: ['Am', 'G', 'F', 'E'],
      lyrics,
      html
 } 

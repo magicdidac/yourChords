@@ -15,5 +15,6 @@ export const SongName: Song = {
     thumbnail: '',
     audio: '',
     lyrics,
-    html
+    html,
+    chords: ['']
 } 

@@ -117,6 +117,7 @@ export const AyMiDios: Song = {
         thumbnail: 'https://i.ytimg.com/vi/FDlvC6O3-18/sddefault.jpg?sqp=-oaymwEWCKoDEPABIAQqCghqEJQEGHgg6AJIWg&rs=AMzJL3lgK4ZSeEKPz8_1Cy2rq1j8E7wOCg',
         audio: 'https://www.youtube.com/watch?v=FDlvC6O3-18',
         capo: 3,
+        chords: ['C', 'G', 'Am', 'F', 'E', 'Em'],
         lyrics,
         html
 } 
