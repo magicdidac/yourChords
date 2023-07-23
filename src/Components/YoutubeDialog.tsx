@@ -13,7 +13,7 @@ export const YoutubeDialog = (props: IYoutubeDialogProps) => {
 
     return (
         <Dialog open={open} onClose={onClose}>
-            <Stack alignItems='end' marginRight='1rem'>
+            <Stack alignItems='end' marginRight='.5rem' marginTop='.5rem'>
                 <IconButton onClick={onClose} size="small"><Close /></IconButton>
             </Stack>
             <DialogContent>

@@ -70,7 +70,7 @@ const Cm: Chord = {
     frets: [0, 0, 2, 2, 1, 0]
 }
 
-export const Chords = {
+export const Chords: Record<string, Chord> = {
     A, Am,
     G, Gm, G7,
     F, Fm,
