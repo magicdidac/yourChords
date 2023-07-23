@@ -4,17 +4,13 @@ const html = `
 
 `
 
-const lyrics = `
-
-`
-
 export const SongName: Song = {
     id: '',
     name: '',
     artists: [''],
     thumbnail: '',
     audio: '',
-    lyrics,
-    html,
-    chords: ['']
+    chords: [],
+    lyrics: '',
+    html
 } 
