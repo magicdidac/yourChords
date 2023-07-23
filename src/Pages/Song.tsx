@@ -3,8 +3,9 @@ import { AllSongsList } from "../Chords"
 import { AppBar, CircularProgress, Container, IconButton, Slider, Stack, Switch, Typography } from "@mui/material"
 import { useState } from "react"
 import { formatNumber } from "../utils"
-import { PlayArrow } from "@mui/icons-material"
+import { MenuBook, PlayArrow } from "@mui/icons-material"
 import { YoutubeDialog } from "../Components/YoutubeDialog"
+import { ChordsDialog } from "../Components/ChordsDialog"
 
 export const SongPage = () => {
     const { id } = useParams()
@@ -12,6 +13,7 @@ export const SongPage = () => {
     const [chordsView, setChordsView] = useState(true)
     const [textSize, setTextSize] = useState(11)
     const [openPlayer, setOpenPlayer] = useState(false)
+    const [openChords, setOpenChords] = useState(false)
 
     const handleChangeView = (_: React.ChangeEvent<HTMLElement>, checked: boolean) => {
         setChordsView(checked)
@@ -29,7 +31,10 @@ export const SongPage = () => {
         <>
             <AppBar position='fixed' style={{ padding: '3.5rem 1rem 0rem', zIndex: '1', background: 'white' }} elevation={0}>
                 <Stack direction='row' justifyContent='space-between' gap='1rem'>
-                    <IconButton onClick={() => setOpenPlayer(true)} size="small" style={{ padding: '0' }}><PlayArrow /></IconButton>
+                    <Stack direction='row' gap='.5rem'>
+                        <IconButton onClick={() => setOpenPlayer(true)} size="small" style={{ padding: '0' }}><PlayArrow /></IconButton>
+                        <IconButton onClick={() => setOpenChords(true)} size="small" style={{ padding: '0' }}><MenuBook /></IconButton>
+                    </Stack>
                     <Stack direction='row' gap='1rem' width='15rem' alignItems='center'>
                         <Typography variant="body2">{formatNumber(textSize) + 'px'}</Typography>
                         <Slider size="small" value={textSize} onChange={handleChangeTextSize} min={8} max={15} step={1} marks />
@@ -50,6 +55,7 @@ export const SongPage = () => {
                 <pre style={{ fontSize: textSize + 'px' }}>{(chordsView) ? song.html : song.lyrics}</pre>
             </Container>
             <YoutubeDialog url={song.audio} onClose={() => setOpenPlayer(false)} open={openPlayer} />
+            <ChordsDialog chords={song.chords} open={openChords} onClose={() => setOpenChords(false)} />
         </>
     )
 }
