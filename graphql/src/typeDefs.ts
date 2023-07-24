@@ -3,7 +3,7 @@ import { gql } from "apollo-server-lambda";
 
 export const typeDefs = gql`
     type Query {
-        songs: [Songs]
+        songs: [Song]
     }
 
     type Song {
@@ -12,9 +12,7 @@ export const typeDefs = gql`
         artists: [String]!,
         thumbnail: String!,
         audio: String!,
-        lyrics: String!,
         html: String!,
-        chords: [String]!,
-        capo: number
+        capo: Int
     }
 `
