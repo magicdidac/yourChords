@@ -4,6 +4,9 @@ on:
   push:
     branches:
      - "master"
+    paths:
+      - "web/**"
+      - ".github/workflows/deploy-web.yml"
   workflow_dispatch:
 
 jobs:
@@ -21,8 +24,8 @@ jobs:
 
       - name: Install modules and build
         run: |
-          yarn
-          yarn build
+          yarn install:web
+          yarn build:web
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -30,5 +33,5 @@ jobs:
           server: ftp.magicdidac.com
           username: u529068159.ftp_chords
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/
+          local-dir: ./web/build/
           port: 21
