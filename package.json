@@ -6,6 +6,7 @@
         "install:api": "cd cdk && yarn && cd ../graphql && yarn",
         "build:web": "cd web && yarn build",
         "build:api": "cd graphql && yarn build",
+        "deploy:api": "cd cdk && yarn deploy",
         "start": "cd web && yarn start"
     },
     "workspaces": [
