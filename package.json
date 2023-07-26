@@ -4,15 +4,18 @@
     "scripts": {
         "install:web": "cd web && yarn",
         "install:api": "cd cdk && yarn && cd ../graphql && yarn",
+        "install:chords": "cd chords && yarn",
         "build:web": "cd web && yarn build",
         "build:api": "cd graphql && yarn build",
         "deploy:api": "cd cdk && yarn deploy",
         "start": "cd web && yarn start",
-        "start:api": "cd graphql && yarn local"
+        "start:api": "cd graphql && yarn local",
+        "publish:chords": "cd chord && yarn publish"
     },
     "workspaces": [
         "web/**",
         "cdk/**",
+        "chords/**",
         "graphql/**"
     ]
 }

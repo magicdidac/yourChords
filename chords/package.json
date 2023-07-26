@@ -1,0 +1,42 @@
+{
+    "name": "@magicdidac/react-chords-display",
+    "version": "0.1.0",
+    "description": "A package to show guitar chords",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "npx tsc",
+        "publish": "yarn build && npm publish",
+        "publish:major": "npm version major",
+        "publish:minor": "npm version minor",
+        "publish:patch": "npm version patch",
+        "publish:beta": "npm version prerelease --preid=beta"
+    },
+    "keywords": [
+        "typescript",
+        "github packages",
+        "npm packages",
+        "guitar chords",
+        "music"
+    ],
+    "author": "magicdidac",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/magicdidac/yourChords.git"
+    },
+    "bugs": {
+        "url": "https://github.com/magicdidac/yourChords/issues"
+    },
+    "homepage": "https://github.com/magicdidac/yourChords",
+    "devDependencies": {
+        "@types/node": "^16.7.13",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.4.2"
+    },
+    "dependencies": {
+        "@types/react": "^18.0.0",
+        "react": "^18.2.0",
+        "react-scripts": "5.0.1"
+    }
+}
