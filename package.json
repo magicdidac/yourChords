@@ -10,7 +10,7 @@
         "deploy:api": "cd cdk && yarn deploy",
         "start": "cd web && yarn start",
         "start:api": "cd graphql && yarn local",
-        "publish:chords": "cd chord && yarn publish"
+        "publish:chords": "cd chords && yarn publish"
     },
     "workspaces": [
         "web/**",
