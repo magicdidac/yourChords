@@ -1,9 +1,9 @@
 import { callDB } from "./database"
 import { Song } from "./interfaces"
-import { getChords, getHtml, getLyrics } from "./utils"
+import { parseSongs } from "./utils"
 
 // Queries
-export const songs = async () => {
+export const songs = async (): Promise<Song[]> => {
     const allSongs = await callDB(`
         SELECT s.*, a.name AS artist
         FROM Songs AS s
@@ -14,26 +14,19 @@ export const songs = async () => {
         ORDER BY s.name ASC;
     `)
 
-    const data: Song[] = []
+    return parseSongs(allSongs)
+}
 
-    for (const song of allSongs) {
-        const dataSong = data.find((d) => d.id === song.id)
-        if (!dataSong) {
-            data.push({
-                id: song.id,
-                name: song.name,
-                thumbnail: song.thumbnail,
-                audio: song.audio,
-                artists: [song.artist],
-                html: getHtml(song.html),
-                lyrics: getLyrics(song.html),
-                chords: getChords(song.html),
-                capo: song.capo
-            })
-        } else {
-            dataSong.artists.push(song.artist)
-        }
-    }
+export const songsById = async (songId: string): Promise<Song> => {
+    const response = await callDB(`
+        SELECT s.*, a.name AS artist
+        FROM Songs AS s
+        INNER JOIN Performs AS p
+            ON p.song = s.id
+        INNER JOIN Artist AS a
+            ON p.artist = a.name
+        WHERE s.id = "${songId}";
+    `)
 
-    return data
+    return parseSongs(response)[0]
 }
