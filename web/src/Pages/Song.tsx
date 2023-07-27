@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom"
-import { AllSongsList } from "../Chords"
-import { AppBar, CircularProgress, Container, IconButton, Slider, Stack, Switch, Typography } from "@mui/material"
+import { AppBar, Container, IconButton, Slider, Stack, Switch, Typography } from "@mui/material"
 import { useState } from "react"
 import { formatNumber } from "../utils"
 import { MenuBook, PlayArrow } from "@mui/icons-material"
 import { YoutubeDialog } from "../Components/YoutubeDialog"
 import { ChordsDialog } from "../Components/ChordsDialog"
+import { useSongById } from "../hooks/Songs"
+import { CenterLoading } from "../Components/CenterLoading"
 
 export const SongPage = () => {
     const { id } = useParams()
-    const song = AllSongsList.find((s) => s.id === id)
+    const { data, loading } = useSongById(id ?? '')
     const [chordsView, setChordsView] = useState(true)
     const [textSize, setTextSize] = useState(11)
     const [openPlayer, setOpenPlayer] = useState(false)
@@ -23,9 +24,7 @@ export const SongPage = () => {
         setTextSize(value as number)
     }
 
-    if (!song) {
-        return <CircularProgress />
-    }
+    if (loading || !data) return <CenterLoading label="Loading song..." />
 
     return (
         <>
@@ -48,14 +47,14 @@ export const SongPage = () => {
             </AppBar>
             <Container style={{ marginTop: '7rem', marginBottom: '2rem', overflowX: 'hidden' }}>
                 <Stack direction='row' gap='.5rem' alignItems='start'>
-                    <Typography variant="h5">{song.name}</Typography>
-                    <div style={{ fontSize: '10px' }}>({song.artists.join(', ')})</div>
+                    <Typography variant="h5">{data.name}</Typography>
+                    <div style={{ fontSize: '10px' }}>({data.artists.join(', ')})</div>
                 </Stack>
-                {song.capo && <div style={{ fontSize: '10px' }}>Traste: {song.capo}</div>}
-                <pre style={{ fontSize: textSize + 'px' }}>{(chordsView) ? song.html : song.lyrics}</pre>
+                {data.capo && <div style={{ fontSize: '10px' }}>Traste: {data.capo}</div>}
+                <pre style={{ fontSize: textSize + 'px' }}>{(chordsView) ? data.html : data.lyrics}</pre>
             </Container>
-            <YoutubeDialog url={song.audio} onClose={() => setOpenPlayer(false)} open={openPlayer} />
-            <ChordsDialog chords={song.chords} open={openChords} onClose={() => setOpenChords(false)} />
+            <YoutubeDialog url={data.audio} onClose={() => setOpenPlayer(false)} open={openPlayer} />
+            <ChordsDialog chords={data.chords} open={openChords} onClose={() => setOpenChords(false)} />
         </>
     )
 }
