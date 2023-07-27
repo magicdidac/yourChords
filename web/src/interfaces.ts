@@ -1,11 +1,11 @@
 export interface Song {
     id: string
     name: string
-    artists: string[]
-    thumbnail: string
     audio: string
-    lyrics: string
+    thumbnail: string
+    artists: string[]
     html: string
+    lyrics: string
     chords: string[]
     capo?: number
 }
