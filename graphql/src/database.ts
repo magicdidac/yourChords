@@ -1,7 +1,6 @@
 import { Connection, createConnection } from 'mysql2/promise'
 
 const setConnection = async (): Promise<Connection> => {
-    console.log(process.env.DB_PASSWORD)
     return await createConnection({
         host: '89.116.147.103',
         user: 'u529068159_your_chords',
