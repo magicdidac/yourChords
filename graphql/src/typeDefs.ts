@@ -4,6 +4,7 @@ import { gql } from "apollo-server-lambda";
 export const typeDefs = gql`
     type Query {
         songs: [Song]
+        songById(songId: String!): Song
     }
 
     type Song {

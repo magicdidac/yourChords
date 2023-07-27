@@ -1,4 +1,5 @@
 import { Chords } from "react-chord-display"
+import { Song } from "./interfaces"
 
 const stringIncludesArray = (value: string, stringArray: string[]): boolean => {
   for (const s of stringArray) {
@@ -15,14 +16,14 @@ const upperCaseFirstLetter = (str: string[]): string[] => {
   return str.map(s => s.charAt(0).toUpperCase() + s.slice(1))
 }
 
-export const getLyrics = (html: string): string => {
+const getLyrics = (html: string): string => {
   const allLyrics = html
     .split(/\r?\n/)
     .filter(l => !stringIncludesArray(l, Object.keys(Chords)))
   return upperCaseFirstLetter(allLyrics).join('\n')
 }
 
-export const getChords = (html: string): string[] => {
+const getChords = (html: string): string[] => {
   const allChords = html
     .split(/\r?\n/)
     .filter(l => stringIncludesArray(l, Object.keys(Chords)))
@@ -34,6 +35,31 @@ export const getChords = (html: string): string[] => {
   return removeDuplicates(allChords)
 }
 
-export const getHtml = (html: string): string => {
+const getHtml = (html: string): string => {
   return upperCaseFirstLetter(html.split(/\r?\n/)).join('\n')
+}
+
+export const parseSongs = (response: any): Song[] => {
+  const data: Song[] = []
+
+  for (const song of response) {
+    const dataSong = data.find((d) => d.id === song.id)
+    if (!dataSong) {
+      data.push({
+        id: song.id,
+        name: song.name,
+        thumbnail: song.thumbnail,
+        audio: song.audio,
+        artists: [song.artist],
+        html: getHtml(song.html),
+        lyrics: getLyrics(song.html),
+        chords: getChords(song.html),
+        capo: song.capo
+      })
+    } else {
+      dataSong.artists.push(song.artist)
+    }
+  }
+
+  return data
 }

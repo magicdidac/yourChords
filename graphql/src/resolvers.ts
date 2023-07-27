@@ -1,8 +1,9 @@
-import { songs } from "./functions"
+import { songs, songsById } from "./functions"
 
 
 export const resolvers = {
     Query: {
-        songs: () => { return songs() }
+        songs: () => { return songs() },
+        songById: (_, args) => { return songsById(args.songId) }
     }
 }
