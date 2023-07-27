@@ -1,4 +1,4 @@
-import { Chords } from "../ChordDisplay/constants";
+import { Chords } from "react-chord-display";
 import { Song } from "../interfaces";
 import { removeDuplicates, stringIncludesArray, upperCaseFirstLetter } from "../utils";
 import { AyMiDios } from "./AyMiDios";

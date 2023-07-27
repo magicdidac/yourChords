@@ -3,10 +3,16 @@ import { initSongsList } from "./Chords"
 import { MyRoutes } from "./routes"
 import { useEffect, useState } from "react"
 import { Song } from "./interfaces"
+import { ApolloClient, ApolloProvider } from "@apollo/client"
+import { InMemoryCache } from "@apollo/client/cache"
 
 export const App = () => {
-
   const [list, setList] = useState<Song[]>()
+
+  const client = new ApolloClient({
+    uri: 'https://dhbq3l01r8.execute-api.us-east-1.amazonaws.com/prod/',
+    cache: new InMemoryCache()
+  })
 
   useEffect(() => {
     setList(initSongsList())
@@ -26,8 +32,10 @@ export const App = () => {
   }
 
   return (
-    <div style={{ marginTop: '3rem' }}>
-      <MyRoutes />
-    </div>
+    <ApolloProvider client={client}>
+      <div style={{ marginTop: '3rem' }}>
+        <MyRoutes />
+      </div>
+    </ApolloProvider>
   )
 }
