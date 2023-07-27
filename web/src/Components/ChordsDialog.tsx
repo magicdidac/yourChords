@@ -1,7 +1,6 @@
 import { Dialog, DialogContent, Grid, IconButton, Stack } from "@mui/material"
-import { ChordDisplay } from "../ChordDisplay"
-import { Chords } from "../ChordDisplay/constants"
 import { Close } from "@mui/icons-material"
+import { ChordDisplay, Chords } from "react-chord-display"
 
 interface IChordsDialogProps {
     chords: string[]
