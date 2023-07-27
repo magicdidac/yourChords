@@ -1,5 +1,6 @@
 import { callDB } from "./database"
 import { Song } from "./interfaces"
+import { getChords, getHtml, getLyrics } from "./utils"
 
 // Queries
 export const songs = async () => {
@@ -24,7 +25,9 @@ export const songs = async () => {
                 thumbnail: song.thumbnail,
                 audio: song.audio,
                 artists: [song.artist],
-                html: song.html,
+                html: getHtml(song.html),
+                lyrics: getLyrics(song.html),
+                chords: getChords(song.html),
                 capo: song.capo
             })
         } else {
