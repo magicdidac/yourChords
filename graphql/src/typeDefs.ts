@@ -13,6 +13,8 @@ export const typeDefs = gql`
         thumbnail: String!,
         audio: String!,
         html: String!,
+        lyrics: String!,
+        chords: [String]!
         capo: Int
     }
 `
