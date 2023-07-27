@@ -23,14 +23,18 @@ const getLyrics = (html: string): string => {
   return upperCaseFirstLetter(allLyrics).join('\n')
 }
 
+const replaceAll = (stringValue: string, searchValue: string, replaceValue: string): string => {
+  return stringValue.split(searchValue).join(replaceValue)
+}
+
 const getChords = (html: string): string[] => {
   const allChords = html
     .split(/\r?\n/)
     .filter(l => stringIncludesArray(l, Object.keys(Chords)))
-    .map((c) => c.replaceAll(' ', '').replaceAll('(p)', ''))
+    .map((c) => replaceAll(replaceAll(c, ' ', ''), '(p)', ''))
     .join()
     .split(/(?=[A-Z])/)
-    .map(c => c.replaceAll(',', ''))
+    .map(c => replaceAll(c, ',', ''))
 
   return removeDuplicates(allChords)
 }
