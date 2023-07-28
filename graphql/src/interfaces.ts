@@ -9,3 +9,7 @@ export interface Song {
     chords: string[]
     capo?: number
 }
+
+export interface Artist {
+    name: string
+}

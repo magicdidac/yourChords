@@ -1,5 +1,5 @@
 import { callDB } from "./database"
-import { Song } from "./interfaces"
+import { Artist, Song } from "./interfaces"
 import { parseSongs } from "./utils"
 
 // Queries
@@ -17,7 +17,7 @@ export const songs = async (): Promise<Song[]> => {
     return parseSongs(allSongs)
 }
 
-export const songsById = async (songId: string): Promise<Song> => {
+export const songById = async (songId: string): Promise<Song> => {
     const response = await callDB(`
         SELECT s.*, a.name AS artist
         FROM Songs AS s
@@ -29,4 +29,40 @@ export const songsById = async (songId: string): Promise<Song> => {
     `)
 
     return parseSongs(response)[0]
+}
+
+export const addSong = async (name: string, thumbnail: string, audio: string, html: string, artist: string[], capo?: number): Promise<Song> => {
+    const songId = name.toLowerCase().split(' ').join('')
+    await callDB(`
+        INSERT INTO Songs (id, name, thumbnail, audio, html, capo)
+        VALUES ("${songId}", "${name}", "${thumbnail}", "${audio}", "${html}", ${capo ?? 'NULL'});
+    `)
+
+    const allArtistsSQL = artist.map(a => `("${songId}", "${a}")`).join(',')
+    await callDB(`
+        INSERT INTO Performs (song, artist)
+        VALUES ${allArtistsSQL};
+    `)
+
+    return await songById(songId)
+}
+
+// Artists
+export const artists = async (): Promise<Artist[]> => {
+    const response = await callDB(`
+        SELECT name
+        FROM Artists
+        ORDER BY name ASC;
+    `)
+
+    return response
+}
+
+export const addArtist = async (artist: string): Promise<Artist> => {
+    await callDB(`
+        INSERT INTO Artists (name)
+        VALUES ("${artist}")
+    `)
+
+    return { name: artist }
 }
