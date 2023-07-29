@@ -9,7 +9,7 @@ export const songs = async (): Promise<Song[]> => {
         FROM Songs AS s
         INNER JOIN Performs AS p
             ON p.song = s.id
-        INNER JOIN Artist AS a
+        INNER JOIN Artists AS a
             ON p.artist = a.name
         ORDER BY s.name ASC;
     `)
@@ -23,7 +23,7 @@ export const songById = async (songId: string): Promise<Song> => {
         FROM Songs AS s
         INNER JOIN Performs AS p
             ON p.song = s.id
-        INNER JOIN Artist AS a
+        INNER JOIN Artists AS a
             ON p.artist = a.name
         WHERE s.id = "${songId}";
     `)
