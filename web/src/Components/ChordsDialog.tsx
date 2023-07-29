@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, Grid, IconButton, Stack } from "@mui/material"
 import { Close } from "@mui/icons-material"
-import { ChordDisplay, Chords } from "react-chord-display"
+import { ChordDisplay, getChordByName } from "react-chord-display"
 
 interface IChordsDialogProps {
     chords: string[]
@@ -24,7 +24,7 @@ export const ChordsDialog = (props: IChordsDialogProps) => {
                 <Grid container spacing={2}>
                     {chords.map(c => (
                         <Grid key={c} item xs={6}>
-                            <ChordDisplay chord={Chords[c]} />
+                            <ChordDisplay chord={getChordByName(c)} />
                         </Grid>
                     ))}
                 </Grid>

@@ -10,8 +10,6 @@ export interface Song {
     capo?: number
 }
 
-export interface Chord {
-    name: string,
-    frets: number[]
-    barre?: number
+export interface Artist {
+    name: string
 }

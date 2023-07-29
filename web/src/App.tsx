@@ -10,7 +10,7 @@ export const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <div style={{ marginTop: '3rem' }}>
+      <div style={{ marginTop: '4rem' }}>
         <MyRoutes />
       </div>
     </ApolloProvider>

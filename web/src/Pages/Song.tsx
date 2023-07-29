@@ -28,7 +28,7 @@ export const SongPage = () => {
 
     return (
         <>
-            <AppBar position='fixed' style={{ padding: '3.5rem 1rem 0rem', zIndex: '1', background: 'white' }} elevation={0}>
+            <AppBar position='fixed' style={{ padding: '4rem 1rem 0rem', zIndex: '1', background: 'white' }} elevation={0}>
                 <Stack direction='row' justifyContent='space-between' gap='1rem'>
                     <Stack direction='row' gap='.5rem'>
                         <IconButton onClick={() => setOpenPlayer(true)} size="small" style={{ padding: '0' }}><PlayArrow /></IconButton>

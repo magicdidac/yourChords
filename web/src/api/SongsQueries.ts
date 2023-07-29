@@ -31,3 +31,19 @@ query ($songId: String!){
     }
 }
 `
+
+export const ADD_SONG = gql`
+mutation($name: String!, $thumbnail: String!, $audio: String!, $html: String!, $artists: [String]!, $capo: Int) {
+    addSong (name: $name, thumbnail: $thumbnail, audio: $audio, html: $html, artists: $artists, capo: $capo){
+        id
+        name
+        audio
+        thumbnail
+        artists
+        html
+        lyrics
+        chords
+        capo
+    }
+}
+`

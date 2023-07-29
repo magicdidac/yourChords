@@ -19,5 +19,14 @@ export const webTheme = createTheme({
         info: {
             main: grey[100]
         }
+    },
+    components: {
+        MuiTextField: {
+            defaultProps: {
+                inputProps: {
+                    style: { fontFamily: '"Roboto Mono", monospace' }
+                }
+            }
+        }
     }
 })

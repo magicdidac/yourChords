@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { GET_SONGS, GET_SONG_BY_ID } from '../api/SongsQueries'
+import { useMutation, useQuery } from '@apollo/client'
+import { ADD_SONG, GET_SONGS, GET_SONG_BY_ID } from '../api/SongsQueries'
 import { Song } from '../interfaces'
 
 export const useSongs = () => {
@@ -19,5 +19,17 @@ export const useSongById = (songId: string) => {
         data: (data && data.songById) ? data.songById as Song : null,
         error,
         loading
+    }
+}
+
+export const useAddSong = () => {
+    const [addSong] = useMutation(ADD_SONG)
+
+    const add = async (name: string, thumbnail: string, audio: string, html: string, artists: string[], capo?: number) => {
+        await addSong({ variables: { name, thumbnail, audio, html, artists, capo } })
+    }
+
+    return {
+        add
     }
 }
