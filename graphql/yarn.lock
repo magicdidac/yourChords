@@ -1430,10 +1430,10 @@ raw-body@2.5.2:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-chord-display@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-chord-display/-/react-chord-display-1.0.4.tgz#b86236f6799424e8c2136cf600d79b8a1e421b3a"
-  integrity sha512-lZTSqmWDeKCg/avpEH38cvFrBVUHqMqmTCg4AspFe/s3T58j0SNnuPY/9Y0t3Vj2HOPny2+A0bsZYFbd3d2YVQ==
+react-chord-display@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-chord-display/-/react-chord-display-1.0.6.tgz#f395888a2a86811860f273f048c7ff2dd76d5ebf"
+  integrity sha512-P//O5Lh9h119ovBtols2IFt6/CPepquPeqXjgnaK+eBh6whKOba+8+QuK3sspF0umbixe3Ooj0rSBoCa6A8EaA==
   dependencies:
     "@types/react" "^18.2.17"
     react "^18.2.0"
