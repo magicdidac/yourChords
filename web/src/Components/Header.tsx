@@ -13,11 +13,14 @@ export const Header = () => {
     return (
         <AppBar position='fixed'>
             <StyledToolbar>
-                <Typography variant='h6' style={{ cursor: 'pointer' }} onClick={() => navigate('/')} >Your Chords</Typography>
+                <Stack direction='row' gap='.5rem' alignItems='end'>
+                    <Typography variant='h6' style={{ cursor: 'pointer' }} onClick={() => navigate('/')} >Your Chords</Typography>
+                    <Typography variant='body2'>v {process.env.REACT_APP_VERSION}</Typography>
+                </Stack>
                 <Stack direction='row' gap='.5rem'>
                     <IconButton><Search /></IconButton>
                 </Stack>
             </StyledToolbar>
-        </AppBar>
+        </AppBar >
     )
 }
