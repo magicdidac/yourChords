@@ -13,3 +13,7 @@ export interface Song {
 export interface Artist {
     name: string
 }
+
+export interface CommonObj {
+    [key: string]: Song[]
+}

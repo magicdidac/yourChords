@@ -47,6 +47,10 @@ export const CreateSong = () => {
     setSubmiting(false)
   }
 
+  const handleCreateArtist = (name: string) => {
+    setArtists([...artists, name])
+  }
+
   const clearAll = () => {
     setName('')
     setThumbnail('')
@@ -134,6 +138,7 @@ export const CreateSong = () => {
         value={html}
         onChange={(event) => setHtml(event.target.value)}
       />
+      <Button variant='contained' style={{ marginTop: '1rem' }} onClick={() => setHtml(html.toLocaleLowerCase())}>minusculizar</Button>
       <div style={{ border: '1px solid #aaa', borderRadius: '.25rem', margin: '3rem 0', padding: '1rem' }}>
         <Typography variant="h5">Preview</Typography>
         <pre>{html}</pre>
@@ -141,7 +146,7 @@ export const CreateSong = () => {
       <Stack alignItems='end'>
         <Button variant='contained' disabled={submiting} onClick={handleAddSong}>Crear canción</Button>
       </Stack>
-      <CreateArtistDialog open={openCreateArtist} onClose={() => setOpenCreateArtist(false)} />
+      <CreateArtistDialog open={openCreateArtist} onClose={() => setOpenCreateArtist(false)} onCreate={handleCreateArtist} />
     </Container>
   )
 }
