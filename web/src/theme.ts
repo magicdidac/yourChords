@@ -27,6 +27,13 @@ export const webTheme = createTheme({
                     style: { fontFamily: '"Roboto Mono", monospace' }
                 }
             }
+        },
+        MuiListItem: {
+            styleOverrides: {
+                root: {
+                    padding: '0 1rem'
+                }
+            }
         }
     }
 })

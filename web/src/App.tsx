@@ -1,6 +1,7 @@
 import { MyRoutes } from "./routes"
 import { ApolloClient, ApolloProvider } from "@apollo/client"
 import { InMemoryCache } from "@apollo/client/cache"
+import { Header } from "./Components/Header"
 
 export const App = () => {
   const client = new ApolloClient({
@@ -10,6 +11,7 @@ export const App = () => {
 
   return (
     <ApolloProvider client={client}>
+      <Header />
       <div style={{ marginTop: '4rem' }}>
         <MyRoutes />
       </div>

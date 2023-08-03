@@ -6,9 +6,9 @@ import { CreateSong } from "./Pages/CreateSong"
 export const MyRoutes = () => {
     return (
         <Routes>
-            <Route path='/' element={<SongList />} />
             <Route path='/song/:id' element={<SongPage />} />
             <Route path='/create' element={<CreateSong />} />
+            <Route path='/' element={<SongList />} />
         </Routes>
     )
 }
