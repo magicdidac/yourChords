@@ -31,7 +31,7 @@ const getChords = (html: string): string[] => {
   const allChords = html
     .split(/\r?\n/)
     .filter(l => stringIncludesArray(l, Object.keys(Chords)))
-    .map((c) => replaceAll(replaceAll(c, ' ', ''), '(p)', ''))
+    .map((c) => replaceAll(replaceAll(replaceAll(c, ' ', ''), '(p)', ''), '\t', ''))
     .join()
     .split(/(?=[A-Z])/)
     .map(c => replaceAll(c, ',', ''))
