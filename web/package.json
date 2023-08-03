@@ -15,7 +15,7 @@
     "@types/react-dom": "^18.0.0",
     "graphql": "^16.7.1",
     "react": "^18.2.0",
-    "react-chord-display": "^1.0.10",
+    "react-chord-display": "^1.0.11",
     "react-dom": "^18.2.0",
     "react-player": "^2.12.0",
     "react-router-dom": "^6.14.2",
