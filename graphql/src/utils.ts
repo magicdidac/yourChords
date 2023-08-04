@@ -30,7 +30,7 @@ const replaceAll = (stringValue: string, searchValue: string, replaceValue: stri
 const getChords = (html: string): string[] => {
   const allChords = html
     .split(/\r?\n/)
-    .filter(l => stringIncludesArray(l, Object.keys(Chords)))
+    .filter(l => stringIncludesArray(l, Object.keys(Chords)) && !l.startsWith('#'))
     .map((c) => replaceAll(replaceAll(replaceAll(c, ' ', ''), '(p)', ''), '\t', ''))
     .join()
     .split(/(?=[A-Z])/)
@@ -52,8 +52,7 @@ export const parseSongs = (response: any): Song[] => {
       data.push({
         id: song.id,
         name: song.name,
-        thumbnail: song.thumbnail,
-        audio: song.audio,
+        videoId: song.videoId,
         artists: [song.artist],
         html: getHtml(song.html),
         lyrics: getLyrics(song.html),
