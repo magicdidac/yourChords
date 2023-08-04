@@ -12,8 +12,7 @@ export const typeDefs = gql`
     type Mutation {
         addSong(
             name: String!,
-            thumbnail: String!,
-            audio: String!,
+            videoId: String!,
             html: String!,
             artists: [String]!
             capo: Int
@@ -26,8 +25,7 @@ export const typeDefs = gql`
         id: String!,
         name: String!,
         artists: [String]!,
-        thumbnail: String!,
-        audio: String!,
+        videoId: String!,
         html: String!,
         lyrics: String!,
         chords: [String]!

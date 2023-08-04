@@ -9,7 +9,7 @@ export const resolvers = {
         artists: () => { return artists() },
     },
     Mutation: {
-        addSong: (_, args) => { return addSong(args.name, args.thumbnail, args.audio, args.html, args.artists, args.capo) },
+        addSong: (_, args) => { return addSong(args.name, args.videoId, args.html, args.artists, args.capo) },
 
         addArtist: (_, args) => { return addArtist(args.artist) },
     }

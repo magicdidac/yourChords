@@ -31,11 +31,11 @@ export const songById = async (songId: string): Promise<Song> => {
     return parseSongs(response)[0]
 }
 
-export const addSong = async (name: string, thumbnail: string, audio: string, html: string, artist: string[], capo?: number): Promise<Song> => {
+export const addSong = async (name: string, videoId: string, html: string, artist: string[], capo?: number): Promise<Song> => {
     const songId = name.toLowerCase().split(' ').join('')
     await callDB(`
-        INSERT INTO Songs (id, name, thumbnail, audio, html, capo)
-        VALUES ("${songId}", "${name}", "${thumbnail}", "${audio}", "${html}", ${capo ?? 'NULL'});
+        INSERT INTO Songs (id, name, videoId, html, capo)
+        VALUES ("${songId}", "${name}", "${videoId}", "${html}", ${capo ?? 'NULL'});
     `)
 
     const allArtistsSQL = artist.map(a => `("${songId}", "${a}")`).join(',')
