@@ -9,8 +9,7 @@ import { useAddSong } from "../hooks/Songs"
 
 export const CreateSong = () => {
   const [name, setName] = useState('')
-  const [thumbnail, setThumbnail] = useState('')
-  const [audio, setAudio] = useState('')
+  const [videoId, setVideoId] = useState('')
   const [html, setHtml] = useState('')
   const [capo, setCapo] = useState('0')
   const [artists, setArtists] = useState<string[]>([])
@@ -39,7 +38,7 @@ export const CreateSong = () => {
       if (capo !== '' && capo !== '0' && parseInt(capo) > 0)
         realCapo = parseInt(capo)
 
-      await addSong.add(name, thumbnail, audio, html, artists, realCapo)
+      await addSong.add(name, videoId, html, artists, realCapo)
       clearAll()
     } catch (e) {
       console.error(e)
@@ -53,8 +52,7 @@ export const CreateSong = () => {
 
   const clearAll = () => {
     setName('')
-    setThumbnail('')
-    setAudio('')
+    setVideoId('')
     setCapo('0')
     setArtists([])
     setHtml('')
@@ -74,15 +72,9 @@ export const CreateSong = () => {
         />
         <TextField
           disabled={submiting}
-          label='Thumbnail'
-          value={thumbnail}
-          onChange={(event) => setThumbnail(event.target.value)}
-        />
-        <TextField
-          disabled={submiting}
-          label='Audio'
-          value={audio}
-          onChange={(event) => setAudio(event.target.value)}
+          label='Id del video'
+          value={videoId}
+          onChange={(event) => setVideoId(event.target.value)}
         />
         <TextField
           disabled={submiting}

@@ -21,7 +21,7 @@ export const SongItem = (props: ISongItemProps) => {
             <ListItem>
                 <ListItemButton onClick={handleClick}>
                     <ListItemAvatar>
-                        <Avatar alt={'thumbnail de ' + song.name} src={song.thumbnail} />
+                        <Avatar alt={'thumbnail de ' + song.name} src={`https://img.youtube.com/vi/${song.videoId}/1.jpg`} />
                     </ListItemAvatar>
                     <ListItemText primary={song.name} />
                 </ListItemButton>

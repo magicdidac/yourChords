@@ -3,13 +3,13 @@ import { Dialog, DialogContent, IconButton, Stack } from "@mui/material"
 import ReactPlayer from "react-player"
 
 interface IYoutubeDialogProps {
-    url: string
+    videoId: string
     open: boolean
     onClose: () => void
 }
 
 export const YoutubeDialog = (props: IYoutubeDialogProps) => {
-    const { url, open, onClose } = props
+    const { videoId, open, onClose } = props
 
     return (
         <Dialog open={open} onClose={onClose}>
@@ -17,7 +17,7 @@ export const YoutubeDialog = (props: IYoutubeDialogProps) => {
                 <IconButton onClick={onClose} size="small"><Close /></IconButton>
             </Stack>
             <DialogContent>
-                <ReactPlayer url={url} width='100%' height='75%' playing={true} />
+                <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} width='100%' height='75%' playing={true} />
             </DialogContent>
         </Dialog>
     )

@@ -25,8 +25,8 @@ export const useSongById = (songId: string) => {
 export const useAddSong = () => {
     const [addSong] = useMutation(ADD_SONG)
 
-    const add = async (name: string, thumbnail: string, audio: string, html: string, artists: string[], capo?: number) => {
-        await addSong({ variables: { name, thumbnail, audio, html, artists, capo } })
+    const add = async (name: string, videoId: string, html: string, artists: string[], capo?: number) => {
+        await addSong({ variables: { name, videoId, html, artists, capo } })
     }
 
     return {

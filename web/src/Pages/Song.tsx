@@ -53,7 +53,7 @@ export const SongPage = () => {
                 {data.capo && <div style={{ fontSize: '10px' }}>Traste: {data.capo}</div>}
                 <pre style={{ fontSize: textSize + 'px' }}>{(chordsView) ? data.html : data.lyrics}</pre>
             </Container>
-            <YoutubeDialog url={data.audio} onClose={() => setOpenPlayer(false)} open={openPlayer} />
+            <YoutubeDialog videoId={data.videoId} onClose={() => setOpenPlayer(false)} open={openPlayer} />
             <ChordsDialog chords={data.chords} open={openChords} onClose={() => setOpenChords(false)} />
         </>
     )

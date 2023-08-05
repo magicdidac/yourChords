@@ -1,8 +1,7 @@
 export interface Song {
     id: string
     name: string
-    audio: string
-    thumbnail: string
+    videoId: string
     artists: string[]
     html: string
     lyrics: string
