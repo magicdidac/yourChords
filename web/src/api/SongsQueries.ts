@@ -5,8 +5,7 @@ query {
     songs {
         id
         name
-        audio
-        thumbnail
+        videoId
         artists
         html
         lyrics
@@ -21,8 +20,7 @@ query ($songId: String!){
     songById (songId: $songId) {
         id
         name
-        audio
-        thumbnail
+        videoId
         artists
         html
         lyrics
@@ -33,12 +31,11 @@ query ($songId: String!){
 `
 
 export const ADD_SONG = gql`
-mutation($name: String!, $thumbnail: String!, $audio: String!, $html: String!, $artists: [String]!, $capo: Int) {
-    addSong (name: $name, thumbnail: $thumbnail, audio: $audio, html: $html, artists: $artists, capo: $capo){
+mutation($name: String!, $videoId: String!, $html: String!, $artists: [String]!, $capo: Int) {
+    addSong (name: $name, videoId: $videoId, html: $html, artists: $artists, capo: $capo){
         id
         name
-        audio
-        thumbnail
+        videoId
         artists
         html
         lyrics
