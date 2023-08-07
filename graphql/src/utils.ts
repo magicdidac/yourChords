@@ -7,9 +7,9 @@ const getCompleteHtml = (html: string) => {
 
   for (const tag of tags) {
     const splited = html.split(tag)
-    const toRepeat = splited[1].split('\n\n')[0].slice(1)
+    const toRepeat = splited[1].split('\n\n')[0]
     newHtml = newHtml.replace(toRepeat, '')
-    newHtml = newHtml.split(tag).join(toRepeat)
+    newHtml = newHtml.split(tag).join(toRepeat.slice(1))
   }
 
   return newHtml
