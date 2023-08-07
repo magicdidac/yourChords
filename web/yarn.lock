@@ -7608,10 +7608,10 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-chord-display@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/react-chord-display/-/react-chord-display-1.0.12.tgz#83fa9ad28555647d42b5fdc4cf5ec6497ca66f74"
-  integrity sha512-/gNW3XHh6xaBNQmyhEza3Zv9VWE8g/ocLK0iJRqbynp8jGDqE7PjvX5iIGu0d4xqH88yDfuSRku0wVXJCa3VbA==
+react-chord-display@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/react-chord-display/-/react-chord-display-1.0.13.tgz#e31a0925d47d34b9c520f9ff3238453c359c657d"
+  integrity sha512-RH0TbsBIYvFYyEcgXBSuSptm37ZjB8kpLZ2To9dn2EfJLEjm6ZQoPzfzqVC8QPTnEwLxSCbCZNFjFga60RNybQ==
   dependencies:
     "@types/react" "^18.2.17"
     react "^18.2.0"

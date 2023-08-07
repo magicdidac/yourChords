@@ -1,8 +1,6 @@
 import { gql } from '@apollo/client'
 
-export const GET_SONGS = gql`
-query {
-    songs {
+const AllSongFields = `
         id
         name
         videoId
@@ -10,7 +8,14 @@ query {
         html
         lyrics
         chords
+        chordsTab
         capo
+`
+
+export const GET_SONGS = gql`
+query {
+    songs {
+        ${AllSongFields}
     }
 }
 `
@@ -18,14 +23,7 @@ query {
 export const GET_SONG_BY_ID = gql`
 query ($songId: String!){
     songById (songId: $songId) {
-        id
-        name
-        videoId
-        artists
-        html
-        lyrics
-        chords
-        capo
+        ${AllSongFields}
     }
 }
 `
@@ -33,14 +31,15 @@ query ($songId: String!){
 export const ADD_SONG = gql`
 mutation($name: String!, $videoId: String!, $html: String!, $artists: [String]!, $capo: Int) {
     addSong (name: $name, videoId: $videoId, html: $html, artists: $artists, capo: $capo){
-        id
-        name
-        videoId
-        artists
-        html
-        lyrics
-        chords
-        capo
+        ${AllSongFields}
+    }
+}
+`
+
+export const EDIT_SONG = gql`
+mutation($songId: String!, $videoId: String!, $html: String!, $artists: [String]!, $capo: Int) {
+    editSong (songId: $songId, videoId: $videoId, html: $html, artists: $artists, capo: $capo){
+        ${AllSongFields}
     }
 }
 `

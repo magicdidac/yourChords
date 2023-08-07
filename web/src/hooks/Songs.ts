@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client'
-import { ADD_SONG, GET_SONGS, GET_SONG_BY_ID } from '../api/SongsQueries'
+import { ADD_SONG, EDIT_SONG, GET_SONGS, GET_SONG_BY_ID } from '../api/SongsQueries'
 import { Song } from '../interfaces'
 
 export const useSongs = () => {
@@ -14,9 +14,20 @@ export const useSongs = () => {
 
 export const useSongById = (songId: string) => {
     const { data, error, loading } = useQuery(GET_SONG_BY_ID, { variables: { songId } })
+    const [editSong] = useMutation(EDIT_SONG, {
+        refetchQueries: [
+            { query: GET_SONG_BY_ID, variables: { songId } },
+            { query: GET_SONGS }
+        ]
+    })
+
+    const edit = async (videoId: string, html: string, artists: string[], capo?: number) => {
+        await editSong({ variables: { videoId, html, artists, capo } })
+    }
 
     return {
         data: (data && data.songById) ? data.songById as Song : null,
+        edit,
         error,
         loading
     }
