@@ -1,7 +1,7 @@
 {
   "name": "your-chords",
   "homepage": "https://chords.magicdidac.com",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.17",

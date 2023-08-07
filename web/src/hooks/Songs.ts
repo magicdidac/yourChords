@@ -22,7 +22,7 @@ export const useSongById = (songId: string) => {
     })
 
     const edit = async (videoId: string, html: string, artists: string[], capo?: number) => {
-        await editSong({ variables: { videoId, html, artists, capo } })
+        await editSong({ variables: { songId, videoId, html, artists, capo } })
     }
 
     return {

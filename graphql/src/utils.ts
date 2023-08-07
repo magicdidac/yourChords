@@ -1,7 +1,22 @@
 import { Song } from "./interfaces"
 
+const getCompleteHtml = (html: string) => {
+  const regex = new RegExp('\\[\\w+\\]', 'g')
+  const tags = Array.from(new Set(html.match(regex)))
+  let newHtml = html
+
+  for (const tag of tags) {
+    const splited = html.split(tag)
+    const toRepeat = splited[1].split('\n\n')[0].slice(1)
+    newHtml = newHtml.replace(toRepeat, '')
+    newHtml = newHtml.split(tag).join(toRepeat)
+  }
+
+  return newHtml
+}
+
 const getAll = (html: string) => {
-  const lines = html.trim().split(/\r?\n/)
+  const lines = getCompleteHtml(html).trim().split(/\r?\n/)
   const chordsRegex = new RegExp('[A-G](#)?(m)?[1-9]?(\-[a-z])?', 'g')
 
   const processedChords: string[] = []
