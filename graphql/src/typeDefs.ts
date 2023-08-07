@@ -17,6 +17,13 @@ export const typeDefs = gql`
             artists: [String]!
             capo: Int
         ): Song
+        editSong(
+            songId: String!
+            videoId: String!
+            html: String!
+            artists: [String]!
+            capo: Int
+        ): Song
 
         addArtist(artist: String!): Artist
     }

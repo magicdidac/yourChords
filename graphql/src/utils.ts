@@ -19,7 +19,8 @@ const getAll = (html: string) => {
       if (verse.length) {
         lyrics += line.trim() + '\n'
       } else {
-        processedChords.push(...match)
+        const correctMatch = match.map(m => m.replace(new RegExp('\-[a-z]?', 'g'), ''))
+        processedChords.push(...correctMatch)
         chordsTab += match.join(', ') + '\n'
       }
     } else {
