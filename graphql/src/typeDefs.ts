@@ -11,9 +11,16 @@ export const typeDefs = gql`
 
     type Mutation {
         addSong(
-            name: String!,
-            videoId: String!,
-            html: String!,
+            name: String!
+            videoId: String!
+            html: String!
+            artists: [String]!
+            capo: Int
+        ): Song
+        editSong(
+            songId: String!
+            videoId: String!
+            html: String!
             artists: [String]!
             capo: Int
         ): Song
@@ -22,13 +29,14 @@ export const typeDefs = gql`
     }
 
     type Song {
-        id: String!,
-        name: String!,
-        artists: [String]!,
-        videoId: String!,
-        html: String!,
-        lyrics: String!,
+        id: String!
+        name: String!
+        artists: [String]!
+        videoId: String!
+        html: String!
+        lyrics: String!
         chords: [String]!
+        chordsTab: String!
         capo: Int
     }
 

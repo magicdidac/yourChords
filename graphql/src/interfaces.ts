@@ -6,6 +6,7 @@ export interface Song {
     html: string
     lyrics: string
     chords: string[]
+    chordsTab: string
     capo?: number
 }
 

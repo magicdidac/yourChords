@@ -1,46 +1,38 @@
-import { Chords } from "react-chord-display"
 import { Song } from "./interfaces"
 
-const stringIncludesArray = (value: string, stringArray: string[]): boolean => {
-  for (const s of stringArray) {
-    if (value.includes(s)) return true
+const getAll = (html: string) => {
+  const lines = html.trim().split(/\r?\n/)
+  const chordsRegex = new RegExp('[A-G](#)?(m)?[1-9]?(\-[a-z])?', 'g')
+
+  const processedChords: string[] = []
+  let lyrics = ''
+  let chordsTab = ''
+
+  for (const line of lines) {
+    if (line.startsWith('#')) {
+      chordsTab += line.trim() + '\n'
+      continue
+    }
+    const match = line.match(chordsRegex)
+    if (match) {
+      const verse = line.replace(chordsRegex, '').trim()
+      if (verse.length) {
+        lyrics += line.trim() + '\n'
+      } else {
+        const correctMatch = match.map(m => m.replace(new RegExp('\-[a-z]?', 'g'), ''))
+        processedChords.push(...correctMatch)
+        chordsTab += match.join(', ') + '\n'
+      }
+    } else {
+      lyrics += line.trim() + '\n'
+    }
   }
-  return false
-}
 
-function removeDuplicates<T>(array: T[]): T[] {
-  return [...new Set(array)]
-}
-
-const upperCaseFirstLetter = (str: string[]): string[] => {
-  return str.map(s => s.charAt(0).toUpperCase() + s.slice(1))
-}
-
-const getLyrics = (html: string): string => {
-  const allLyrics = html
-    .split(/\r?\n/)
-    .filter(l => !stringIncludesArray(l, Object.keys(Chords)))
-  return upperCaseFirstLetter(allLyrics).join('\n')
-}
-
-const replaceAll = (stringValue: string, searchValue: string, replaceValue: string): string => {
-  return stringValue.split(searchValue).join(replaceValue)
-}
-
-const getChords = (html: string): string[] => {
-  const allChords = html
-    .split(/\r?\n/)
-    .filter(l => stringIncludesArray(l, Object.keys(Chords)) && !l.startsWith('#'))
-    .map((c) => replaceAll(replaceAll(replaceAll(c, ' ', ''), '(p)', ''), '\t', ''))
-    .join()
-    .split(/(?=[A-Z])/)
-    .map(c => replaceAll(c, ',', ''))
-
-  return removeDuplicates(allChords)
-}
-
-const getHtml = (html: string): string => {
-  return upperCaseFirstLetter(html.split(/\r?\n/)).join('\n')
+  return {
+    chords: Array.from(new Set(processedChords)),
+    lyrics: lyrics.trim(),
+    chordsTab: chordsTab.trim()
+  }
 }
 
 export const parseSongs = (response: any): Song[] => {
@@ -49,14 +41,16 @@ export const parseSongs = (response: any): Song[] => {
   for (const song of response) {
     const dataSong = data.find((d) => d.id === song.id)
     if (!dataSong) {
+      const { lyrics, chords, chordsTab } = getAll(song.html)
       data.push({
         id: song.id,
         name: song.name,
         videoId: song.videoId,
         artists: [song.artist],
-        html: getHtml(song.html),
-        lyrics: getLyrics(song.html),
-        chords: getChords(song.html),
+        html: song.html,
+        lyrics,
+        chords,
+        chordsTab,
         capo: song.capo
       })
     } else {

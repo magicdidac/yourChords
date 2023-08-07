@@ -1,24 +1,37 @@
-import { useState } from "react"
-import { useAddSong } from "../hooks/Songs"
+import { useEffect, useState } from "react"
+import { useSongById } from "../hooks/Songs"
 import { SongForm } from "../Components/SongForm"
+import { useParams } from "react-router-dom"
+import { CenterLoading } from "../Components/CenterLoading"
 
-export const CreateSong = () => {
-  const [name, setName] = useState('')
+export const EditSong = () => {
+  const { id } = useParams()
+
   const [videoId, setVideoId] = useState('')
   const [html, setHtml] = useState('')
   const [capo, setCapo] = useState('0')
   const [artists, setArtists] = useState<string[]>([])
 
-  const addSong = useAddSong()
+  const song = useSongById(id ?? '')
 
-  const handleAddSong = async () => {
+  useEffect(() => {
+    if (!song.data) return
+
+    setVideoId(song.data.videoId)
+    setCapo(song.data.capo + '')
+    setArtists(song.data.artists)
+    setHtml(song.data.html)
+
+  }, [song.data])
+
+  const handleEditSong = async () => {
     try {
       let realCapo: number | undefined = undefined
 
       if (capo !== '' && capo !== '0' && parseInt(capo) > 0)
         realCapo = parseInt(capo)
 
-      await addSong.add(name, videoId, html, artists, realCapo)
+      await song.edit(videoId, html, artists, realCapo)
       clearAll()
     } catch (e) {
       console.error(e)
@@ -26,21 +39,21 @@ export const CreateSong = () => {
   }
 
   const clearAll = () => {
-    setName('')
     setVideoId('')
     setCapo('0')
     setArtists([])
     setHtml('')
   }
 
+  if (song.loading || !song.data) return <CenterLoading label="Loading Song..." />
+
   return (
     <SongForm
-      title="Crear Canción"
-      buttonLabel="Crear Canción"
-      onSuccess={handleAddSong}
+      title="Editar Canción"
+      buttonLabel="Editar Canción"
+      onSuccess={handleEditSong}
 
-      name={name}
-      onChangeName={(value: string) => setName(value)}
+      name={song.data.name}
       videoId={videoId}
       onChangeVideoId={(value: string) => setVideoId(value)}
       capo={capo}

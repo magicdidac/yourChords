@@ -47,6 +47,25 @@ export const addSong = async (name: string, videoId: string, html: string, artis
     return await songById(songId)
 }
 
+export const editSong = async (songId: string, videoId: string, html: string, artist: string[], capo?: number): Promise<Song> => {
+    await callDB(`
+        UPDATE Songs
+        SET videoId="${videoId}", html="${html}", capo=${capo ?? 'NULL'}
+        WHERE id = "${songId}";
+    `)
+
+    await callDB(`
+        DELETE FROM Performs WHERE song = "${songId}"
+    `)
+    const allArtistsSQL = artist.map(a => `("${songId}", "${a}")`).join(',')
+    await callDB(`
+        INSERT INTO Performs (song, artist)
+        VALUES ${allArtistsSQL};
+    `)
+
+    return await songById(songId)
+}
+
 // Artists
 export const artists = async (): Promise<Artist[]> => {
     const response = await callDB(`
