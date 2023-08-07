@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSongById } from "../hooks/Songs"
 import { SongForm } from "../Components/SongForm"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { CenterLoading } from "../Components/CenterLoading"
 
 export const EditSong = () => {
@@ -13,6 +13,7 @@ export const EditSong = () => {
   const [artists, setArtists] = useState<string[]>([])
 
   const song = useSongById(id ?? '')
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!song.data) return
@@ -32,17 +33,10 @@ export const EditSong = () => {
         realCapo = parseInt(capo)
 
       await song.edit(videoId, html, artists, realCapo)
-      clearAll()
+      navigate(`/song/${id}`)
     } catch (e) {
       console.error(e)
     }
-  }
-
-  const clearAll = () => {
-    setVideoId('')
-    setCapo('0')
-    setArtists([])
-    setHtml('')
   }
 
   if (song.loading || !song.data) return <CenterLoading label="Loading Song..." />
