@@ -22,10 +22,11 @@ jobs:
         with: 
           node-version: 16
 
-      - name: Install modules and build
-        run: |
-          yarn install:web
-          yarn build:web
+      - name: Install modules
+        run: yarn install:web
+
+      - name: Build web
+        run: yarn build:web
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3

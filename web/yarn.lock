@@ -1725,6 +1725,14 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@magicdidac/chord-display@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@magicdidac/chord-display/-/chord-display-1.1.1.tgz#752daac6312c6cd1b9f0a13f0feba1aaf1bd367f"
+  integrity sha512-XWJ83k0WXgRvhyMwqk7Q3txtJmJ3IunHkPTqVsY7vy9FbP4arbWH3LMswKi0DG4I9xu5tmLRHkI50qhdEt9oMQ==
+  dependencies:
+    "@types/react" "^18.2.19"
+    react "^18.2.0"
+
 "@mui/base@5.0.0-beta.8":
   version "5.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.8.tgz#a0a9531ae9147be92d17e4f0e3b9accc57916841"
@@ -2305,10 +2313,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.2.17":
-  version "18.2.18"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.18.tgz#c8b233919eef1bdc294f6f34b37f9727ad677516"
-  integrity sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==
+"@types/react@^18.2.19":
+  version "18.2.19"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.19.tgz#f77cb2c8307368e624d464a25b9675fa35f95a8b"
+  integrity sha512-e2S8wmY1ePfM517PqCG80CcE48Xs5k0pwJzuDZsfE8IZRRBfOMCF+XqnFxu6mWtyivum1MQm4aco+WIt6Coimw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -7607,14 +7615,6 @@ react-app-polyfill@^3.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
-
-react-chord-display@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/react-chord-display/-/react-chord-display-1.0.13.tgz#e31a0925d47d34b9c520f9ff3238453c359c657d"
-  integrity sha512-RH0TbsBIYvFYyEcgXBSuSptm37ZjB8kpLZ2To9dn2EfJLEjm6ZQoPzfzqVC8QPTnEwLxSCbCZNFjFga60RNybQ==
-  dependencies:
-    "@types/react" "^18.2.17"
-    react "^18.2.0"
 
 react-dev-utils@^12.0.1:
   version "12.0.1"
