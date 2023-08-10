@@ -1,13 +1,13 @@
 {
   "name": "your-chords",
   "homepage": "https://chords.magicdidac.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@magicdidac/chord-display": "^1.1.1",
+    "@magicdidac/chord-display": "^1.1.3",
     "@mui/icons-material": "^5.14.1",
     "@mui/material": "^5.14.0",
     "@types/jest": "^27.0.1",
