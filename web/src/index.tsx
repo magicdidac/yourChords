@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { webTheme } from './theme';
+import { ApolloProvider } from '@apollo/client';
+import { ApiClient } from './api';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +15,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={webTheme}>
       <BrowserRouter>
-        <App />
+        <ApolloProvider client={ApiClient}>
+          <App />
+        </ApolloProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

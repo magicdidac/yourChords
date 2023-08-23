@@ -16,7 +16,7 @@ export const Header = () => {
     const [openSearch, setOpenSearch] = useState(false)
 
     return (
-        <AppBar position='fixed'>
+        <AppBar position='sticky'>
             <StyledToolbar>
                 <Stack direction='row' gap='.5rem' alignItems='end'>
                     <Typography variant='h6' style={{ cursor: 'pointer' }} onClick={() => navigate('/')} >Your Chords</Typography>
@@ -29,6 +29,6 @@ export const Header = () => {
                 }
             </StyledToolbar>
             <SearchSongDialog open={openSearch} onClose={() => setOpenSearch(false)} songs={data} />
-        </AppBar >
+        </AppBar>
     )
 }

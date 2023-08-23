@@ -1,6 +1,18 @@
 name: API Deploy
 
 on:
+  workflow_call:
+    secrets:
+      AWS_ACCESS:
+        required: true
+      AWS_SECRET:
+        required: true
+      DB:
+        required: true
+      DB_IP:
+        required: true
+      DB_PASSWORD:
+        required: true
   push:
     branches:
       - "master"
@@ -21,7 +33,7 @@ jobs:
       - name: Node setup
         uses: actions/setup-node@v3
         with: 
-          node-version: 16
+          node-version: 18
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -36,6 +48,8 @@ jobs:
       - name: Deploy API
         run: yarn deploy:api
         env:
+          DB: ${{ secrets.DB }}
+          DB_IP: ${{ secrets.DB_IP }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       
 

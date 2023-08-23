@@ -7,22 +7,18 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
     "cdk": "cdk",
     "deploy": "npx cdk deploy --require-approval never prod-your-chords-stack"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
-    "@types/node": "17.0.14",
-    "aws-cdk": "2.28.0",
+    "@types/node": "20.5.3",
+    "aws-cdk": "2.92.0",
     "esbuild": "0",
-    "jest": "^28.1.0",
-    "ts-jest": "^28.0.2",
-    "ts-node": "^10.8.0",
-    "typescript": "^4.6.4"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.28.0",
-    "constructs": "^10.1.14"
+    "aws-cdk-lib": "2.92.0",
+    "constructs": "^10.2.69"
   }
 }

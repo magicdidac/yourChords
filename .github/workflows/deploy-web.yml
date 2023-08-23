@@ -1,6 +1,14 @@
 name: Web Deploy
 
 on:
+  workflow_call:
+    secrets:
+      FTP_ACCOUNT:
+        required: true
+      FTP_PASSWORD:
+        required: true
+      GRAPHQL:
+        required: true
   push:
     branches:
      - "master"
@@ -20,19 +28,21 @@ jobs:
       - name: Node setup
         uses: actions/setup-node@v3
         with: 
-          node-version: 16
+          node-version: 18
 
       - name: Install modules
         run: yarn install:web
 
       - name: Build web
         run: yarn build:web
+        env:
+          REACT_APP_GRAPHQL: ${{ secrets.GRAPHQL }}
 
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp.magicdidac.com
-          username: u529068159.ftp_chords
+          username: ${{ secrets.FTP_ACCOUNT }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./web/build/
           port: 21

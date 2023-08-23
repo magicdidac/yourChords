@@ -3,19 +3,19 @@
     "version": "0.1.0",
     "scripts": {
         "build": "tsc",
-        "local": "npx nodemon ./src/local.ts"
+        "local": "nodemon -r dotenv/config ./src/local.ts"
     },
     "devDependencies": {
         "@types/node": "^20.4.4",
         "apollo-server": "3.5.0",
         "esbuild": "0",
-        "nodemon": "^2.0.19",
         "ts-node": "^10.8.0",
         "typescript": "^4.6.4"
     },
     "dependencies": {
         "apollo-server-core": "3.5.0",
         "apollo-server-lambda": "3.5.0",
+        "dotenv": "^16.3.1",
         "graphql": "^16.6.0",
         "mysql2": "^3.2.0"
     }
