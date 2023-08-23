@@ -1,4 +1,4 @@
-export interface Song {
+export interface ISong {
     id: string
     name: string
     videoId: string
@@ -9,10 +9,10 @@ export interface Song {
     capo?: number
 }
 
-export interface Artist {
+export interface IArtist {
     name: string
 }
 
-export interface CommonObj {
-    [key: string]: Song[]
+export interface ICommonObj {
+    [key: string]: ISong[]
 }

@@ -1,13 +1,13 @@
 import { useMutation, useQuery } from "@apollo/client"
 import { ADD_ARTIST, GET_ARTISTS } from "../api/ArtistsQueries"
-import { Artist } from "../interfaces"
+import { IArtist } from "../interfaces"
 
 
 export const useArtists = () => {
   const { data, error, loading } = useQuery(GET_ARTISTS)
 
   return {
-    data: (data && data.artists) ? data.artists as Artist[] : null,
+    data: (data && data.artists) ? data.artists as IArtist[] : null,
     error,
     loading
   }

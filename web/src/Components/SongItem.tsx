@@ -1,14 +1,13 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import { Song } from "../interfaces"
+import { ISong } from "../interfaces"
 
 interface ISongItemProps {
-    song: Song
+    song: ISong
     onClose?: () => void
 }
 
-export const SongItem = (props: ISongItemProps) => {
-    const { song, onClose } = props
+export const SongItem = ({ song, onClose }: ISongItemProps) => {
     const navigate = useNavigate()
 
     const handleClick = () => {

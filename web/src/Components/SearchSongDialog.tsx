@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, List, Stack, TextField } from "@mui/material"
-import { Song } from "../interfaces"
+import { ISong } from "../interfaces"
 import { useState } from "react"
 import { SongItem } from "./SongItem"
 import { formatString } from "../utils"
@@ -7,7 +7,7 @@ import { formatString } from "../utils"
 interface ISearchSongDialogProps {
   open: boolean
   onClose: () => void
-  songs: Song[]
+  songs: ISong[]
 }
 
 export const SearchSongDialog = (props: ISearchSongDialogProps) => {
@@ -19,12 +19,12 @@ export const SearchSongDialog = (props: ISearchSongDialogProps) => {
     setSearchWords('')
   }
 
-  const getFilteredSongs = (): Song[] => {
+  const getFilteredSongs = (): ISong[] => {
 
     if (searchWords === '') return songs
 
     const lowerCase = formatString(searchWords)
-    let filteredList: Song[] = []
+    let filteredList: ISong[] = []
 
     filteredList = songs.filter((song) => (
       formatString(song.name).includes(lowerCase) ||
