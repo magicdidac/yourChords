@@ -1,9 +1,10 @@
 import { Search } from '@mui/icons-material';
 import { AppBar, IconButton, Stack, Toolbar, Typography, styled } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useSongs } from '../hooks/Songs';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useSongById, useSongs } from '../hooks/Songs';
 import { SearchSongDialog } from './SearchSongDialog';
 import { useState } from 'react';
+import { useIsMobile } from '../hooks/Mobile';
 
 const StyledToolbar = styled(Toolbar)({
     display: 'flex',
@@ -14,14 +15,26 @@ export const Header = () => {
     const navigate = useNavigate()
     const { data, loading } = useSongs()
     const [openSearch, setOpenSearch] = useState(false)
+    const location = useLocation()
+    const id = location.pathname.split('/')[2]
+    const { data: song } = useSongById(id ?? '')
+    const isMobile = useIsMobile()
 
     return (
         <AppBar position='sticky'>
             <StyledToolbar>
-                <Stack direction='row' gap='.5rem' alignItems='end'>
-                    <Typography variant='h6' style={{ cursor: 'pointer' }} onClick={() => navigate('/')} >Your Chords</Typography>
-                    <Typography variant='body2'>v {process.env.REACT_APP_VERSION}</Typography>
+                <Stack direction='row' alignItems='center'>
+                    <Stack direction='row' gap='.5rem' alignItems='end'>
+                        <Typography variant='h6' style={{ cursor: 'pointer' }} onClick={() => navigate('/')} >Your Chords</Typography>
+                        <Typography variant='body2'>v {process.env.REACT_APP_VERSION}</Typography>
+                    </Stack>
                 </Stack>
+                {(id && song && !isMobile) &&
+                    <Stack direction='row' gap='.5rem' alignItems='center'>
+                        <Typography variant='h6'>{song.name}</Typography>
+                        {song.capo && <Typography variant='subtitle2'>({song.capo})</Typography>}
+                    </Stack>
+                }
                 {(!loading && data) &&
                     <Stack direction='row' gap='.5rem'>
                         <IconButton onClick={() => setOpenSearch(true)}><Search /></IconButton>
