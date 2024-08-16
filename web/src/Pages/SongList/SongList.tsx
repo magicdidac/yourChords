@@ -1,4 +1,4 @@
-import { Divider, List, ListItem, Typography } from "@mui/material"
+import { Container, Divider, ListItem, Typography } from "@mui/material"
 import { SongItem } from "../../Components/SongItem"
 import { useSongs } from "../../hooks/Songs"
 import { useEffect, useState } from "react"
@@ -27,7 +27,7 @@ export const SongList = () => {
   if (loading || !songs) return <CenterLoading label="Loading Songs..." />
 
   return (
-    <List>
+    <Container>
       {
         Object.keys(songs).map((letter: string) => {
           const letterSongs = songs[letter]
@@ -44,6 +44,6 @@ export const SongList = () => {
           )
         })
       }
-    </List>
+    </Container>
   )
 }
